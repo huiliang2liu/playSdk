@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PlaySdk</string>
+    <string name="login">登录</string>
+
+<!--    <string name="facebook_app_id">5485730538174825</string>-->
+<!--    <string name="fb_login_protocol_scheme">fb1234</string>-->
+<!--    <string name="facebook_client_token">a6e544f2245bebd3a9832b36cf45851f</string>-->
+
+    <string name="facebook_app_id">541606457585106</string>
+    <string name="fb_login_protocol_scheme">541606457585106</string>
+    <string name="facebook_client_token">20ee4de26e7e695de99cdf57e1917bdb</string>
+
+
+</resources>
