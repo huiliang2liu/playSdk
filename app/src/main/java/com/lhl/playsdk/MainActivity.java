@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void login() {
-        App.getApp().googleLogin((uid) -> {
+        App.getApp().facebookLogin((uid) -> {
             Log.e("=====", uid.toString());
         });
         new Thread() {

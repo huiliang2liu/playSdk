@@ -2,9 +2,9 @@ apply plugin: 'maven-publish'  // gradle 7 以后使用
 
 boolean hasWeb = false
 
-var PUB_GROUP_ID = "com.abc.sdk"
-var PUB_ARTIFACT_ID = "common"
-var PUB_CORE_VERSION = "1.0.1"
+var PUB_GROUP_ID = "com.lhl.login"
+var PUB_ARTIFACT_ID = "login"
+var PUB_CORE_VERSION = "1.0.0"
 var PUBLISH_URL = "/Users/liuhuiliang/work/gitMaven"
 var PUBLISH_USERNAME = "deployment"
 var PUBLISH_PASSWORD = "000000"

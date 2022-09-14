@@ -9,7 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.lhl.listener.LoginListener;
+import com.lhl.listener.PayListener;
 import com.lhl.login.ILogin;
+import com.lhl.pay.IPay;
 import com.lhl.result.Result;
 import com.lhl.result.ResultImpl;
 import com.lhl.result.activity.ResultCallback;
@@ -129,6 +131,13 @@ public class StartActivity implements Application.ActivityLifecycleCallbacks {
         if (mActivity == null)
             return;
         new ILogin.Builder().setActivity(mActivity).setType(type).setListener(listener).build().login();
+    }
+
+
+    public void pay(int num, String goods, float price, String currency, String passThrough, PayListener listener, @IPay.Types int type){
+        if (mActivity == null)
+            return;
+        new IPay.Builder().setActivity(mActivity).setFlag(type).setListener(listener).build().pay(num,goods,price,currency,passThrough);
     }
 
     public void startActivity(Intent intent) {

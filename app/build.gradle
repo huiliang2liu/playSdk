@@ -67,8 +67,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.9.0";
     implementation "com.squareup.retrofit2:converter-gson:2.9.0";
     implementation "com.squareup.okhttp3:logging-interceptor:3.14.9";
-    implementation 'com.abc.sdk:common:1.0.1'
-    implementation 'com.abc.sdk:common:1.0.1'
+    implementation 'com.lhl.login:login:1.0.0'
 //    implementation 'com.app.live:linkvui:2.0.1'
 //    implementation project(':game')
     testImplementation 'junit:junit:4.13.2'

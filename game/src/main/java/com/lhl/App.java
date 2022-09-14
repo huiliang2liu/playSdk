@@ -15,7 +15,9 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import com.lhl.app.life.AppLifeListener;
 import com.lhl.app.life.Life;
 import com.lhl.listener.LoginListener;
+import com.lhl.listener.PayListener;
 import com.lhl.login.ILogin;
+import com.lhl.pay.IPay;
 import com.lhl.result.activity.ResultCallback;
 
 import java.util.ArrayList;
@@ -67,6 +69,11 @@ public class App implements ViewModelStoreOwner, HasDefaultViewModelProviderFact
     public void facebookLogin(LoginListener listener) {
         assert listener != null : "listener is null";
         activity.login(ILogin.LOGIN_IN_FACEBOOK, listener);
+    }
+
+    public void googlePay(int num, String goods, float price, String currency, String passThrough, PayListener listener){
+        assert listener != null : "listener is null";
+        activity.pay(num,goods,price,currency,passThrough,listener, IPay.GOOGLE_PAY);
     }
 
     public void startActivity(Intent intent) {
