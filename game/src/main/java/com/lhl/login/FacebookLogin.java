@@ -25,8 +25,6 @@ import java.util.Arrays;
 
 public class FacebookLogin extends AbsLogin implements FacebookCallback<LoginResult> {
     private static final String TAG = "FacebookLogin";
-    private Activity activity;
-    private LoginListener listener;
     private volatile static boolean isInit = false;
 
     public FacebookLogin(Activity activity, LoginListener listener) {

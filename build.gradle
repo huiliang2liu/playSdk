@@ -5,7 +5,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-
+//        mavenLocal()
 
         maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
         maven { url 'https://maven.aliyun.com/repository/google' }
@@ -13,6 +13,7 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://jitpack.io' }
+        maven { url 'https://gitee.com/liu-huiliang/jarlibs/raw/master' }
         maven {
             allowInsecureProtocol = true
             url 'http://maven.linkv.fun/repository/liveme-android/'
@@ -40,6 +41,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+//        mavenLocal()
+        maven { url 'https://gitee.com/liu-huiliang/jarlibs/raw/master' }
         maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
