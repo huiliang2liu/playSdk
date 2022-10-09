@@ -79,6 +79,7 @@ public class App implements ViewModelStoreOwner, HasDefaultViewModelProviderFact
         assert listener != null : "listener is null";
         activity.login(ILogin.LOGIN_IN_HUA_WEI_AUTHORIZATION, listener);
     }
+
     public void huaWeiIdToken(LoginListener listener) {
         assert listener != null : "listener is null";
         activity.login(ILogin.LOGIN_IN_HUA_WEI_ID_TOKEN, listener);
@@ -87,6 +88,11 @@ public class App implements ViewModelStoreOwner, HasDefaultViewModelProviderFact
     public void googlePay(int num, String goods, float price, String currency, String passThrough, PayListener listener) {
         assert listener != null : "listener is null";
         activity.pay(num, goods, price, currency, passThrough, listener, IPay.GOOGLE_PAY);
+    }
+
+    public void huaWeiPay(int num, String goods, float price, String currency, String passThrough, PayListener listener) {
+        assert listener != null : "listener is null";
+        activity.pay(num, goods, price, currency, passThrough, listener, IPay.HUA_WEI_PAY);
     }
 
     public void startActivity(Intent intent) {
@@ -98,7 +104,7 @@ public class App implements ViewModelStoreOwner, HasDefaultViewModelProviderFact
     }
 
     public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options, ResultCallback callback) throws IntentSender.SendIntentException {
-        activity.startIntentSenderForResult(intent,requestCode,fillInIntent,flagsMask,flagsValues,extraFlags,options,callback);
+        activity.startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options, callback);
     }
 
     @NonNull

@@ -11,11 +11,12 @@ import java.lang.annotation.RetentionPolicy;
 
 public interface IPay {
     int GOOGLE_PAY = 1;
+    int HUA_WEI_PAY = GOOGLE_PAY << 1;
 
     void pay(int num, String goods, float price, String currency, String passThrough);
 
 
-    @IntDef({GOOGLE_PAY})
+    @IntDef({GOOGLE_PAY, HUA_WEI_PAY})
     @Retention(RetentionPolicy.SOURCE)
     @interface Types {
     }
@@ -47,6 +48,8 @@ public interface IPay {
         public IPay build() {
             if (flag == GOOGLE_PAY)
                 return new GooglePay(activity, listener);
+            if (flag == HUA_WEI_PAY)
+                return new HuaweiPay(activity, listener);
             return null;
         }
     }
