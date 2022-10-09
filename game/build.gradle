@@ -46,6 +46,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-wallet:19.0.0'
     implementation 'com.android.support:appcompat-v7:24.1.1'
     implementation 'com.android.billingclient:billing:4.0.0'
+    api 'com.huawei.hms:hwid:6.7.0.300'
+    api 'com.huawei.hms:iap:6.4.0.301'
 
 
     testImplementation 'junit:junit:4.13.2'

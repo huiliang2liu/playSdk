@@ -3,6 +3,7 @@ package com.lhl;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -134,10 +135,10 @@ public class StartActivity implements Application.ActivityLifecycleCallbacks {
     }
 
 
-    public void pay(int num, String goods, float price, String currency, String passThrough, PayListener listener, @IPay.Types int type){
+    public void pay(int num, String goods, float price, String currency, String passThrough, PayListener listener, @IPay.Types int type) {
         if (mActivity == null)
             return;
-        new IPay.Builder().setActivity(mActivity).setFlag(type).setListener(listener).build().pay(num,goods,price,currency,passThrough);
+        new IPay.Builder().setActivity(mActivity).setFlag(type).setListener(listener).build().pay(num, goods, price, currency, passThrough);
     }
 
     public void startActivity(Intent intent) {
@@ -151,6 +152,19 @@ public class StartActivity implements Application.ActivityLifecycleCallbacks {
             return;
         Result result = new ResultImpl(mActivity);
         result.startActivityForResult(requestCode, intent, new ResultCallback() {
+            @Override
+            public void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if (callback != null)
+                    callback.onActivityResult(requestCode, resultCode, data);
+            }
+        });
+    }
+
+    public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options, ResultCallback callback) throws IntentSender.SendIntentException {
+        if (intent == null || mActivity == null)
+            return;
+        Result result = new ResultImpl(mActivity);
+        result.startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options, new ResultCallback() {
             @Override
             public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 if (callback != null)

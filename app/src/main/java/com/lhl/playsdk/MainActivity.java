@@ -7,7 +7,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.lhl.listener.LoginListener;
+import com.lhl.model.User;
 import com.lhl.playsdk.databinding.ActivityMainBinding;
 import com.lhl.App;
 
@@ -34,14 +37,22 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void login() {
-//        App.getApp().facebookLogin((uid) -> {
-//            Log.e("=====", uid.toString());
-//        });
+        App.getApp().huaWeiIdToken(new LoginListener() {
+            @Override
+            public void onLoginSucceed(User user) {
+                Toast.makeText(getApplicationContext(), user.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLoginFailure() {
+                Toast.makeText(getApplicationContext(), "onLoginFailure", Toast.LENGTH_SHORT).show();
+            }
+        });
 //        isAvilible(this,"aaa");
-        Log.e("=======",getClass().getName());
+        Log.e("=======", getClass().getName());
     }
 
-    private boolean isAvilible(Context context, String packageName){
+    private boolean isAvilible(Context context, String packageName) {
         //获取packagemanager
         final PackageManager packageManager = context.getPackageManager();
         //获取全部已安装程序的包信息
@@ -49,10 +60,10 @@ public class MainActivity extends FragmentActivity {
         //用于存储全部已安装程序的包名
         List<String> packageNames = new ArrayList<String>();
         //从pinfo中将包名字逐一取出，压入pName list中
-        if(packageInfos != null){
-            for(int i = 0; i < packageInfos.size(); i++){
+        if (packageInfos != null) {
+            for (int i = 0; i < packageInfos.size(); i++) {
                 String packName = packageInfos.get(i).packageName;
-                Log.e("=======",packName);
+                Log.e("=======", packName);
                 packageNames.add(packName);
             }
         }

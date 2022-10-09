@@ -12,8 +12,10 @@ import java.lang.annotation.RetentionPolicy;
 public interface ILogin {
     int LOGIN_IN_GOOGLE = 1;
     int LOGIN_IN_FACEBOOK = LOGIN_IN_GOOGLE<<1;
+    int LOGIN_IN_HUA_WEI_AUTHORIZATION = LOGIN_IN_FACEBOOK<<1;
+    int LOGIN_IN_HUA_WEI_ID_TOKEN = LOGIN_IN_HUA_WEI_AUTHORIZATION<<1;
 
-    @IntDef({LOGIN_IN_GOOGLE,LOGIN_IN_FACEBOOK})
+    @IntDef({LOGIN_IN_GOOGLE,LOGIN_IN_FACEBOOK,LOGIN_IN_HUA_WEI_AUTHORIZATION,LOGIN_IN_HUA_WEI_ID_TOKEN})
     @Retention(RetentionPolicy.SOURCE)
     @interface Types {
     }
@@ -51,6 +53,10 @@ public interface ILogin {
                 return new GoogleLogin(activity, listener);
             if(type == LOGIN_IN_FACEBOOK)
                 return new FacebookLogin(activity,listener);
+            if(type == LOGIN_IN_HUA_WEI_AUTHORIZATION)
+                return new HuaWeiAuthorization(activity,listener);
+            if(type == LOGIN_IN_HUA_WEI_ID_TOKEN)
+                return new HuaWeiIdToken(activity,listener);
             return null;
         }
     }

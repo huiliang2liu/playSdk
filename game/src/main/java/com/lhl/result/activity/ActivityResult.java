@@ -3,6 +3,8 @@ package com.lhl.result.activity;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.os.Bundle;
 
 import com.lhl.result.ResultImpl;
 
@@ -45,6 +47,10 @@ public class ActivityResult implements IResult {
     private void replace(Intent intent) {
         if (intent == null)
             return;
+    }
 
+    @Override
+    public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options, ResultCallback... callbacks) throws IntentSender.SendIntentException {
+        result.startIntentSenderForResult(intent,requestCode,fillInIntent,flagsMask,flagsValues,extraFlags,options,callbacks);
     }
 }

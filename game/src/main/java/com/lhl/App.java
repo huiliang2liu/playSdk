@@ -3,6 +3,8 @@ package com.lhl;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -18,6 +20,8 @@ import com.lhl.listener.LoginListener;
 import com.lhl.listener.PayListener;
 import com.lhl.login.ILogin;
 import com.lhl.pay.IPay;
+import com.lhl.result.Result;
+import com.lhl.result.ResultImpl;
 import com.lhl.result.activity.ResultCallback;
 
 import java.util.ArrayList;
@@ -71,9 +75,18 @@ public class App implements ViewModelStoreOwner, HasDefaultViewModelProviderFact
         activity.login(ILogin.LOGIN_IN_FACEBOOK, listener);
     }
 
-    public void googlePay(int num, String goods, float price, String currency, String passThrough, PayListener listener){
+    public void huaWeiAuthorization(LoginListener listener) {
         assert listener != null : "listener is null";
-        activity.pay(num,goods,price,currency,passThrough,listener, IPay.GOOGLE_PAY);
+        activity.login(ILogin.LOGIN_IN_HUA_WEI_AUTHORIZATION, listener);
+    }
+    public void huaWeiIdToken(LoginListener listener) {
+        assert listener != null : "listener is null";
+        activity.login(ILogin.LOGIN_IN_HUA_WEI_ID_TOKEN, listener);
+    }
+
+    public void googlePay(int num, String goods, float price, String currency, String passThrough, PayListener listener) {
+        assert listener != null : "listener is null";
+        activity.pay(num, goods, price, currency, passThrough, listener, IPay.GOOGLE_PAY);
     }
 
     public void startActivity(Intent intent) {
@@ -82,6 +95,10 @@ public class App implements ViewModelStoreOwner, HasDefaultViewModelProviderFact
 
     public void startActivityForResult(int requestCode, Intent intent, ResultCallback callback) {
         activity.startActivityForResult(requestCode, intent, callback);
+    }
+
+    public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options, ResultCallback callback) throws IntentSender.SendIntentException {
+        activity.startIntentSenderForResult(intent,requestCode,fillInIntent,flagsMask,flagsValues,extraFlags,options,callback);
     }
 
     @NonNull

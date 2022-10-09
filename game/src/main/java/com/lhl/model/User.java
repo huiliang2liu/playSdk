@@ -4,6 +4,8 @@ public class User {
     public String id;
     public String token;
     public String email;
+    public String code;
+    public String name;
 
     @Override
     public String toString() {
@@ -11,6 +13,8 @@ public class User {
                 "id='" + id + '\'' +
                 ", token='" + token + '\'' +
                 ", email='" + email + '\'' +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

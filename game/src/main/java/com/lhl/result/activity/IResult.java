@@ -1,6 +1,8 @@
 package com.lhl.result.activity;
 
 import android.content.Intent;
+import android.content.IntentSender;
+import android.os.Bundle;
 
 /**
  * com.forScreen.util.result
@@ -16,6 +18,7 @@ public interface IResult {
      * email ：825378291@qq.com
      */
     void startActivityForResult(int requsetCode, Intent intent, ResultCallback... callbacks);
+
     /**
      * 2019/1/8 10:48
      * annotation：启动activity
@@ -23,4 +26,8 @@ public interface IResult {
      * email ：825378291@qq.com
      */
     void startActivity(Intent intent);
+
+    void startIntentSenderForResult (IntentSender intent, int requestCode,
+                                    Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags,
+                                    Bundle options, ResultCallback... callbacks) throws IntentSender.SendIntentException;
 }

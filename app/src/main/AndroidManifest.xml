@@ -30,7 +30,7 @@
             android:value="@string/facebook_app_id"
             tools:replace="android:value" />
         <activity
-            android:name="com.text.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,7 +3,10 @@ package com.lhl.result;
 import android.Manifest;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -13,6 +16,7 @@ import com.lhl.result.permission.PermissionCallback;
 import java.io.File;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 
 /**
@@ -144,5 +148,13 @@ public class AndroidFragment extends Fragment implements Result {
                 }
             }
         });
+    }
+
+    @Override
+    public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options, ResultCallback... callbacks) throws IntentSender.SendIntentException {
+        result.registerActivityResult(requestCode, callbacks);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            super.startIntentSenderForResult(intent,requestCode,fillInIntent,flagsMask,flagsValues,extraFlags,options);
+        }
     }
 }

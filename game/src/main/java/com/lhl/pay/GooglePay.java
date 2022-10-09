@@ -116,7 +116,6 @@ public class GooglePay extends AbsPay implements PurchasesUpdatedListener {
         mBillingClient.consumeAsync(consumeParams, (billingResult, purchaseToken) -> {
             if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ERROR) {
                 //消费失败将商品重新放入消费队列
-
                 return;
             }
             Log.i("TAG", "消费成功: ");

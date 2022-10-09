@@ -2,7 +2,9 @@ package com.lhl.result;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -103,6 +105,7 @@ public class V4Fragment extends Fragment implements Result {
         Intent intent = ResultBack.screenshots(getActivity(), imageUri, saveUri, aspectX, aspectY, outputX, outputY);
         startActivityForResult(SCREENSHOT, intent, callback);
     }
+
     @Override
     public boolean checkWriteSettings() {
         return result.checkWriteSettings(getActivity());
@@ -145,5 +148,12 @@ public class V4Fragment extends Fragment implements Result {
                 }
             }
         });
+    }
+
+    public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options, ResultCallback... callbacks) throws IntentSender.SendIntentException {
+        result.registerActivityResult(requestCode, callbacks);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            super.startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options);
+        }
     }
 }
