@@ -6,7 +6,9 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
+import android.os.Bundle;
 
 import com.lhl.result.activity.ResultCallback;
 import com.lhl.result.permission.PermissionCallback;
@@ -321,5 +323,10 @@ public final class ResultImpl implements Result {
     @Override
     public void requestSystemAlertWindow(PermissionCallback callback) {
         result.requestSystemAlertWindow(callback);
+    }
+
+    @Override
+    public void startIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options, ResultCallback... callbacks) throws IntentSender.SendIntentException {
+        result.startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options, callbacks);
     }
 }
